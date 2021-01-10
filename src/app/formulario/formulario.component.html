@@ -1,4 +1,4 @@
-<form>
+<form (ngSubmit)="f.form.valid && agregarValor()" #f="ngForm"> <!-- Se revisa si el formulario es válido mediante una referencia local (#f) asociada al ngForm, que es el objeto de Angular que hace referencia al formulario y se monitorea el objeto ngSubmit -->
   <div class="agregar">
       <div class="agregar_contenedor">
           <select (change)="tipoOperacion($event)" class="agregar_tipo" [ngClass]="{redfocus: tipo === 'egresoOperacion'}">
@@ -6,12 +6,12 @@
               <option value="egresoOperacion">-</option>
           </select>
           <input name="descripcionInput" type="text" class="agregar_descripcion" placeholder="Agregar Descripción"
-          [(ngModel)]="descripcionInput"
+          [(ngModel)]="descripcionInput" required
           [ngClass]="{redfocus: tipo === 'egresoOperacion'}">
           <input name="valorInput" type="number" class="agregar_valor" placeholder="Valor"
-          [(ngModel)]="valorInput"
+          [(ngModel)]="valorInput" required
           [ngClass]="{redfocus: tipo === 'egresoOperacion'}">
-          <button type="submit" class="agregar_btn" (click)="agregarValor()">
+          <button type="submit" class="agregar_btn">
             <i [ngClass]="{red: tipo === 'egresoOperacion'}" class="ion-ios-checkmark-outline"></i>
           </button>
       </div>
